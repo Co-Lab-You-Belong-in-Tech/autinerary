@@ -6,7 +6,7 @@ import Azuka from '../../../public/images/team/Azuka.jpg';
 import Eli from '../../../public/images/team/Eliyana.jpg';
 import Liam from '../../../public/images/team/Liam.jpg';
 import Laura from '../../../public/images/team/Laura.jpg';
-import Genevieve from '../../../public/images/team/Genevieve.jpeg';
+import Genevieve from '../../../public/images/team/Genevieve.jpg';
 import Cleoniki from '../../../public/images/team/Cleoniki.jpg';
 import positivity from '../../../public/images/icons/positivitycloud.png';
 import innovation from '../../../public/images/icons/innovation.png';

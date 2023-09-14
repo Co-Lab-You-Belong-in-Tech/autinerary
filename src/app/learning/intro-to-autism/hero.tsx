@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hero from '../../../../public/images/heros/autintrobkgrd.png';
+import hero from '../../../../public/images/heros/autintrobkgrd.jpg';
 
 export default function AutismIntroHero() {
   return (
