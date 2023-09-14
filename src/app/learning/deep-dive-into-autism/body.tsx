@@ -56,11 +56,11 @@ const socialImpacts = [
     question: 'Impacts on Lifestyle',
     answer: (
       <p className="text-2xl mx-10 text-justify [text-align-last:center] leading-10 my-5">
-        ASD can significantly limit some individual's ability to carry out daily activities, access education and employment, negatively influencing their ability to participate in the society while others with autism are 
+        ASD can significantly limit some individual&apos;s ability to carry out daily activities, access education and employment, negatively influencing their ability to participate in the society while others with autism are 
         able to live fulfilling and independent lives. The lifelong care-giving of individuals on ASD can be demanding, extremely stressful and financially devastating for families and results in some parents having to quit or 
         downgrading their jobs to provide the necessary supports for their children on ASD. The lifetime costs of care for a high needs ASD diagnosis can range up to $5.5 million. However, for most families, the cost is more than 
         financial and include the emotional and mental well-being of parents, siblings and extended family. <span className="font-bold">The empowerment of caregivers is a critical component of care for children with the severe form of ASD to improve their quality of life.</span>
-        It's also important to remember that <span className="font-bold">early intervention generally increases chances of avoiding autism's worst case scenarios mentioned above.</span>       
+        It&apos;s also important to remember that <span className="font-bold">early intervention generally increases chances of avoiding autism&apos;s worst case scenarios mentioned above.</span>       
       </p>
     )
   },
@@ -69,7 +69,7 @@ const socialImpacts = [
     answer: (
       <p className="text-2xl mx-10 text-justify [text-align-last:center] leading-10 my-5">
         The average lifespan for individuals with ASD is half of the general population as they appear to be at an increased risk of death from injury and have higher rates of suicide attempts, and suicide deaths. Individuals with ASD appear more likely to have more unfavourably police encounters or interactions that escalate unnecessarily with studies showing that police are largely unaware they are interacting with someone with ASD. 
-        <span className="font-bold">As mentioned earlier, the earlier the diagnosis and intervention, the higher the chances of avoiding autism's worst case scenarios mentioned above.</span>       
+        <span className="font-bold">As mentioned earlier, the earlier the diagnosis and intervention, the higher the chances of avoiding autism&apos;s worst case scenarios mentioned above.</span>       
       </p>
     )
   }
@@ -111,11 +111,11 @@ export default function DeepDiveBody() {
 
       <div id='evolution' className="bg-gradient-to-r from-[#d85d5d] to-[#e38484] py-6 my-6 text-white">
         <div className="pt-8 pb-4 mt-10">
-          <h2 className="text-center text-xl">Let's start with...</h2>
+          <h2 className="text-center text-xl">Let&apos;s start with...</h2>
           <h2 className="text-center text-5xl my-6 font-semibold">The Evolution of Autism</h2>
 
           <p className="text-2xl mx-10 text-justify [text-align-last:center] leading-10">
-            The definition of autism has evolved from Leo Kanner's description of a distinct syndrome of early infantile autism in 1940s to the current Diagnostic and Statistical Manual of the American Psychiatric Association (DSM-5) broader definition of a communication and behavioural disorder.
+            The definition of autism has evolved from Leo Kanner&apos;s description of a distinct syndrome of early infantile autism in 1940s to the current Diagnostic and Statistical Manual of the American Psychiatric Association (DSM-5) broader definition of a communication and behavioural disorder.
           </p>
           <div className="flex justify-center">
             <Image src={autismLevels} alt='Autism Levels' width={972} height={606} className="my-4 py-4"/>
@@ -143,7 +143,7 @@ export default function DeepDiveBody() {
 
       <div id='xteristics' className="bg-gradient-to-r from-[#d85d5d] to-[#e38484] py-6 my-6 text-white">
         <div className="pt-8 pb-4 mt-10">
-          <h2 className="text-center text-xl">It's important to know</h2>
+          <h2 className="text-center text-xl">It&apos;s important to know</h2>
           <h2 className="text-center text-5xl my-6 font-semibold">The Characteristics of Autism</h2>
         </div>
 
@@ -201,7 +201,7 @@ export default function DeepDiveBody() {
           <h2 className="text-center text-5xl my-6 font-semibold">Diagnosis & Early Prevention</h2>
         </div>
         <p className="text-2xl mx-10 text-justify mb-8 [text-align-last:center] leading-10">
-          There is <span className="font-bold">no medical test for autism such as blood tests or brain scans. </span> Autism is <span className="font-bold">diagnosed based on observation of a child's communication and behaviour in comparison to other children of the same age.</span>
+          There is <span className="font-bold">no medical test for autism such as blood tests or brain scans. </span> Autism is <span className="font-bold">diagnosed based on observation of a child&apos;s communication and behaviour in comparison to other children of the same age.</span>
           Autism diagnosis is done by trained health professionals such as a psychologist, developmental-behavioral pediatrician, child psychiatrist or other providers. Diagnosis typically involves an interview with the parents or caregivers, and play-based testing with the child (Copeland, 2018). Early diagnosis and treatment are important to reduce the symptoms of autism and improve the quality of life for people with autism.
         </p>
         <div className="flex justify-center">
@@ -211,7 +211,7 @@ export default function DeepDiveBody() {
 
       <div id='impacts' className="bg-gradient-to-r from-[#d85d5d] to-[#e38484] py-6 my-6 text-white">
         <div className="pt-8 pb-4 mt-10">
-          <h2 className="text-center text-xl">What are Autism's...</h2>
+          <h2 className="text-center text-xl">What are Autism&apos;s...</h2>
           <h2 className="text-center text-5xl my-6 font-semibold">Social and Economic Impacts</h2>
         </div>
         <div className="my-8">

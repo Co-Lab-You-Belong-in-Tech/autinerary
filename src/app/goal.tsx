@@ -29,18 +29,18 @@ export default function Goal() {
         </div>
 
         <p className="text-justify [text-align-last:center] leading-relaxed m-6 px-6 mt-4 font-light text-2xl">
-          Our autism 'journey roadmap', or itinerary (hence the name 'Autinerary'), is here to support parents, children, adults, educators, and anyone else
+          Our autism &apos;journey roadmap&apos;, or itinerary (hence the name &lsquo;Autinerary&rsquo;), is here to support parents, children, adults, educators, and anyone else
           connected to autism on their ASD journey by providing everything they need in one place.
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed m-6 px-6 mt-6 pt-4 font-light text-2xl">
-          Whether you're looking for <span className='font-semibold'>information </span> on symptoms, diagnosis, treatments and interventions, accessing services, and other important resources, 
+          Whether you&apos;re looking for <span className='font-semibold'>information </span> on symptoms, diagnosis, treatments and interventions, accessing services, and other important resources, 
           looking for <span className='font-semibold'>direct locations </span> to professionals who can help you, a <span className='font-semibold'>platform to connect with others </span>
           at similar stages in their journeys, or are interested in <span className='font-semibold'>future tech solutions </span>to autism-related issues, we aim to provide and link everything autism-related in one easy-to-access, easy-to-understand, location. 
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed m-6 px-6 mt-6 pt-6 pb-12 font-light text-2xl">
-          Wherever you are on your autism journey, <span className='font-semibold'>we're here for you.</span>
+          Wherever you are on your autism journey, <span className='font-semibold'>we&apos;re here for you.</span>
         </p>
       </section>
 
@@ -52,7 +52,7 @@ export default function Goal() {
 
         <p className="text-justify [text-align-last:center] leading-relaxed m-6 px-6 mt-4 font-light text-2xl">
           Autinerary was originally developed for families to fill the void of missing info during the ASD journey, but transformed into a 
-          central connecting and information hub for anything autism-related. Instead of trying to replace other sources of Autism information, we're instead 
+          central connecting and information hub for anything autism-related. Instead of trying to replace other sources of Autism information, we&apos;re instead 
           trying to bring everything together, so that no matter what you need, you can find it here. Our fundamental goal is centered around the questions 
           most families find themselves asking at the beginning of - and anywhere during - their autism journey: 
         </p>
@@ -60,7 +60,7 @@ export default function Goal() {
         <h3 className="font-bold my-6 leading-loose text-center text-2xl">“What should we expect as we step into the world of Autism?”</h3>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-2xl">
-          However, that's not our only goal. We've noticed that so many Autism-focused websites have a 
+          However, that&apos;s not our only goal. We&apos;ve noticed that so many Autism-focused websites have a 
           negative, deflating feel about them, correlating Autism with fear, sadness, and hopelessness. After going through the
           journey ourselves, we strongly feel that the joy, positivity, creativity, and imagination that comes from Autism
           should be known to everyone curious about it. So, this is what we do:        
@@ -84,9 +84,9 @@ export default function Goal() {
         </div>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-2xl">
-          Autinerary's team originated from a family that had to deal with autism directly, with almost no help at all, and the only
-          information available being from doctors who believed autism to an 'incurable disease', and something to give up on. After years of pushing through, 
-          they were able to find their way: focusing on positivity, and that is now Autinerary's moto.    
+          Autinerary&apos;s team originated from a family that had to deal with autism directly, with almost no help at all, and the only
+          information available being from doctors who believed autism to an &apos;incurable disease&apos;, and something to give up on. After years of pushing through, 
+          they were able to find their way: focusing on positivity, and that is now Autinerary&apos;s moto.    
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-2xl">
@@ -96,7 +96,7 @@ export default function Goal() {
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-2xl">
-          If you want to learn more about us - who we are, our story, our mission, our strategy, our impact & initiatives so far - then don't hesitate
+          If you want to learn more about us - who we are, our story, our mission, our strategy, our impact & initiatives so far - then don&apos;t hesitate
           to click the button below:     
         </p>
 

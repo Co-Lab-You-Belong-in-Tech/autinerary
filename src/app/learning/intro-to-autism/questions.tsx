@@ -32,7 +32,7 @@ const whatIsAutismQuestions = [
     answer: (
       <p className="text-xl mx-10 text-justify [text-align-last:center] leading-10">
         Autism is actually more common than most people think, occuring once in every 66 Canadian Children and Youth. Trust us; 
-        <span className="font-bold">you're not alone in this.</span>
+        <span className="font-bold">you&apos;re not alone in this.</span>
       </p>
     )
   },
@@ -40,8 +40,8 @@ const whatIsAutismQuestions = [
     question: 'Difference In Cases',
     answer: (
       <p className="text-xl mx-10 text-justify [text-align-last:center] leading-10">
-        What's important to remember is that <span className="font-bold"> every autism case is different. </span>
-        Some who are on the spectrum might show every symptom related to autism, while others might show extremely mild cases, where both they and others around can't notice it. 
+        What&apos;s important to remember is that <span className="font-bold"> every autism case is different. </span>
+        Some who are on the spectrum might show every symptom related to autism, while others might show extremely mild cases, where both they and others around can&apos;t notice it. 
       </p>
     )
   },
@@ -54,7 +54,7 @@ const whatIsAutismQuestions = [
           For example: developmental delays such as speech or hearing problems, extremely specific and restricted interests, high intelligence, high sensitivity to light, sound, touch, etc, difficulties processing
           certain emotions or feelings, and other psychological disorders such as (but not limited to) OCD, schizophrenia, depression, or anxiety. Many (not all) of these conditions are actually caused by
           <span className="font-bold">lead poisoning, Down syndrome, or other genetic disorders.</span>
-          We'll leave resources to dealing with those conditions below: 
+          We&apos;ll leave resources to dealing with those conditions below: 
         </p>
         <div className="flex flex-col gap-y-4 md:flex-row md:justify-around">
           {
@@ -75,10 +75,10 @@ const whatIsAutismQuestions = [
     answer: (
       <div>
         <p className="text-xl mx-10 text-justify [text-align-last:center] leading-10">
-          If you're interested to know about some incorrect rumours about Autism, read the "10 Things Autism Isn't" article by Research Autism below. We'll be adding this to our recommended blogs page soon!          
+          If you&apos;re interested to know about some incorrect rumours about Autism, read the &ldquo;10 Things Autism Isn&apos;t&rdquo; article by Research Autism below. We&apos;ll be adding this to our recommended blogs page soon!          
         </p>
         <div className="flex flex-col gap-y-4 md:flex-row md:justify-around">
-          <Link className='text-[#360000] bg-white my-4 rounded-lg px-6 py-3 text-center border-2 border-[#360000] tracking-wide' target='_blank' href='https://researchautism.org/ten-things-autism-isnt/'>10 Things Autism Isn't</Link>
+          <Link className='text-[#360000] bg-white my-4 rounded-lg px-6 py-3 text-center border-2 border-[#360000] tracking-wide' target='_blank' href='https://researchautism.org/ten-things-autism-isnt/'>10 Things Autism Isn&apos;t</Link>
         </div>
       </div>
     
@@ -91,7 +91,7 @@ const howAutismDevelops = [
     question: 'First Pattern',
     answer: (
       <p className="text-xl mx-10 text-justify [text-align-last:center] leading-10">
-        The onset of autism generally follows two patterns. In the first or “early” onset, children show gradual abnormalities in social and communication development beginning in the first year and more persistent 
+        The onset of autism generally follows two patterns. In the first or &ldquo;early&rdquo; onset, children show gradual abnormalities in social and communication development beginning in the first year and more persistent 
         differences by the second year of life (Palomo et al., 2006). This means <span className="font-bold">the difficulty your child will develop in communicating will begin 1 year, and get more noticeable the next year.</span>
       </p>
     )
@@ -171,7 +171,7 @@ export default function AutismIntroQuestions(){
   return (
     <section>
       <div className="px-2 mx-4 my-6 py-6">
-        <h1 className="text-center mt-4 py-4 text-5xl">Let's start at the beginning.</h1>
+        <h1 className="text-center mt-4 py-4 text-5xl">Let&apos;s start at the beginning.</h1>
         <p className="text-justify [text-align-last:center] text-2xl leading-10">First, we must answer three important questions</p>
         <div className="flex flex-col gap-y-4 md:flex-row md:justify-around my-6 md:my-9">
           {
@@ -185,7 +185,7 @@ export default function AutismIntroQuestions(){
       <div id='what' className="bg-gradient-to-r from-[#d85d5d] to-[#e38484] py-6 my-6 text-white">
         <div className="py-8">
           <h2 className="text-center text-xl">Question 1:</h2>
-          <h2 className="text-center text-5xl my-6 font-semibold">What really is Autism? (and what it isn't)</h2>
+          <h2 className="text-center text-5xl my-6 font-semibold">What really is Autism? (and what it isn&apos;t)</h2>
 
           <div>
             {

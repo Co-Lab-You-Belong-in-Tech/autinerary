@@ -16,7 +16,7 @@ export default function AutismDeepDiveHero() {
       <div className='relative mx-auto flex flex-col justify-center text-white items-center p-2'>
         <h4 className="text-3xl md:text-4xl tracking-widest leading-loose font-normal my-2">Do you want to take</h4>
         <h2 className="uppercase mt-2 tracking-wide text-center font-bold text-5xl md:text-7xl">a deep dive into autism?</h2>
-        <h4 className="text-3xl text-center leading-loose mt-5 font-normal">If so, we'll try to help you with that.</h4>
+        <h4 className="text-3xl text-center leading-loose mt-5 font-normal">If so, we&apos;ll try to help you with that.</h4>
 
       </div>
 

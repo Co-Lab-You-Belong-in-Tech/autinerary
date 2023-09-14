@@ -89,9 +89,9 @@ const questionsData = [
     answer: (
       <div>
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">
-          Autinerary's team originated from a family that had to deal with autism directly, with almost no help at all, and the only
-          information available being from doctors who believed autism to an 'incurable disease', and something to give up on. After years of pushing through, 
-          they were able to find their way: focusing on positivity, and that is now Autinerary's moto.    
+          Autinerary&apos;s team originated from a family that had to deal with autism directly, with almost no help at all, and the only
+          information available being from doctors who believed autism to an &apos;incurable disease&apos;, and something to give up on. After years of pushing through, 
+          they were able to find their way: focusing on positivity, and that is now Autinerary&apos;s moto.    
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">
@@ -101,7 +101,7 @@ const questionsData = [
         </p>
 
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">
-          The nitty-gritty of our story is something that would take quite a while to write, and something we want to talk about in full, so we'll share this in the future! 
+          The nitty-gritty of our story is something that would take quite a while to write, and something we want to talk about in full, so we&apos;ll share this in the future! 
         </p>
       </div>
     )
@@ -113,13 +113,13 @@ const questionsData = [
       <div>
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">
           Autinerary was originally developed for families to fill the void of missing info during the ASD journey, but transformed into a 
-          central connecting and information hub for anything autism-related. Instead of trying to replace other sources of Autism information, we're instead 
+          central connecting and information hub for anything autism-related. Instead of trying to replace other sources of Autism information, we&apos;re instead 
           trying to bring everything together, so that no matter what you need, you can find it here. Our fundamental goal is centered around the questions 
           most families find themselves asking at the beginning of - and anywhere during - their autism journey: 
         </p>
         <p className="text-center font-bold my-8 text-2xl"> “What should we expect as we step into the world of Autism?” </p>
         <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">
-          However, that's not our only goal. We've noticed that so many Autism-focused websites have a 
+          However, that&apos;s not our only goal. We&apos;ve noticed that so many Autism-focused websites have a 
           negative, deflating feel about them, correlating Autism with fear, sadness, and hopelessness. After going through the
           journey ourselves, we strongly feel that the joy, positivity, creativity, and imagination that comes from Autism should be known to everyone curious about it. So, this is what we do:            
         </p>
@@ -146,7 +146,7 @@ const questionsData = [
     question: 'Our Impact & Initiative So Far',
     answer: (
       <div>
-        <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">Right now, we're just getting started! In the future, we hope to add to this section bit-by-bit, so you can watch our journey unfold!</p>
+        <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl">Right now, we&apos;re just getting started! In the future, we hope to add to this section bit-by-bit, so you can watch our journey unfold!</p>
       </div>
     )
   },
@@ -155,7 +155,7 @@ const questionsData = [
     question: 'Our Successes',
     answer: (
       <div className='text-[#838383] text-center'>
-        <h4 className="text-3xl my-6 font-bold">Black Founder Network's Smart Stat Award</h4>
+        <h4 className="text-3xl my-6 font-bold">Black Founder Network&apos;s Smart Stat Award</h4>
         <p className="text-xl mb-6">$4000 funding from BFN and KPMG</p>
         <Image src={bfn} alt='bfn' />
       </div>
@@ -179,7 +179,7 @@ const questionsData = [
     question: 'Other FAQ',
     answer: (
       <div>
-        <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl"> Let us know what you'd like to know about us! Our email and social media is provided at the bottom of this page.</p>
+        <p className="text-justify [text-align-last:center] leading-relaxed mb-8 m-6 px-6 mt-4 font-light text-xl"> Let us know what you&apos;d like to know about us! Our email and social media is provided at the bottom of this page.</p>
       </div>
     )
   },
@@ -206,7 +206,7 @@ export default function Team(){
           <Image src={images[currentImage]} alt='About Slide' className="w-[60%] h-[58%]" />
         </div>
         <p className="text-justify [text-align-last:center] leading-relaxed pb-8 px-6 mt-4 font-light mx-6 text-2xl">
-          Autinerary's "Autism Journey Roadmap" was developed <span className="font-bold">by families who've gone through it all, for families just starting their journey. </span> 
+          Autinerary&apos;s &quot;Autism Journey Roadmap&quot; was developed <span className="font-bold">by families who&apos;ve gone through it all, for families just starting their journey. </span> 
           It compiles web sources of information to make it easier to navigate the labyrinth of ASD resources and services available for families of children with autism. 
           The project was inspired by our experiences and the experiences of families we knew struggling to navigate various services in Ontario, and aims to provide an easy, step-by-step guide on navigating and accessing resources, no matter where you are on your ASD journey. 
         </p>
