@@ -4,16 +4,59 @@ import Image from "next/image";
 import logo from '../../public/images/Logo.png';
 import logoWhite from '../../public/images/logoWhite.png';
 import { useEffect, useState } from "react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import menubar from '../../public/images/icons/drop.jpg'
 import menubarWhite from '../../public/images/icons/drop2.png'
 import Link from "next/link";
+import {PiCaretDownBold} from 'react-icons/pi';
 
+interface SubDropdownItems {
+  name: string;
+  link: string;
+}
 
-const navbarLinks = [
+interface DropdownItems {
+  name: string;
+  link?: string;
+  subDropdown?: SubDropdownItems[];
+}
+
+interface NavbarLinks {
+  name: string;
+  link?: string;
+  dropdown?: DropdownItems[]
+}
+
+const navbarLinks:NavbarLinks[] = [
   {name:"5Q's", link:'#'},
-  {name:"Learning", link:'#'},
+  {
+    name:"Learning",
+    dropdown: [
+      { 
+        name: 'About Autism',
+        subDropdown: [
+          { name: 'Intro to Autism', link: '/learning/intro-to-autism' },
+          { name: 'Deep dive into Autism', link: '/learning/deep-dive-into-autism' },
+        ]
+      },
+      {
+        name: 'About Diagnosis',
+        subDropdown: [
+          { name: 'Signs & Symptoms', link: '#' },
+          { name: 'Assessment & Diagnosis', link: '#' },
+        ]
+      },
+    ]
+  },
   {name:"Services Hub", link:'#'},
-  {name:"Content", link:'#'},
+  {
+    name:"Content",
+    dropdown: [
+      { name: 'News', link: '#' },
+      { name: 'Blogs', link: '#' },
+      { name: 'Videos', link: '#' },
+    ]
+  },
   {name:"Community", link:'#'},
   {name:"About Us & FAQ", link: '/about'},
   {name:"Contact Us", link:'#'},
@@ -52,7 +95,35 @@ export default function Navbar() {
       <div className={isMenuOpen ? 'bg-white' : 'hidden'}>
         {
           navbarLinks.map((link) => (
-            <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
+            <div key={link.name}>
+              { link.link ? (
+                <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
+              ) : (
+                <Collapsible className="w-full flex flex-col justify-center text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4 cursor-pointer">
+                  <CollapsibleTrigger className='flex text-center justify-center items-center gap-x-2'>{link.name} <PiCaretDownBold /></CollapsibleTrigger>
+                  <CollapsibleContent className="bg-white p-3 text-center mt-3">
+                    {link.dropdown?.map((dropdown) => (
+                      <>
+                        {dropdown.link ? (
+                          <Link key={dropdown.name} className="block text-center bg-white hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={dropdown.link}>{dropdown.name}</Link>            
+                        ): (
+                          <>
+                            <Collapsible className="w-full flex flex-col justify-center mx-auto text-center">
+                              <CollapsibleTrigger className='flex justify-center text-center py-4 items-center gap-x-2'>{dropdown.name} <PiCaretDownBold /></CollapsibleTrigger>
+                              <CollapsibleContent>
+                                {dropdown.subDropdown?.map((item, idx) => (
+                                  <Link key={idx} className="block text-center bg-white hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={item.link}>{item.name}</Link>            
+                                ))}
+                              </CollapsibleContent>
+                            </Collapsible>
+                          </>
+                        )}
+                      </>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
+              )}
+            </div>
           ))
         }
         <button className="md:hidden w-full text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd]  py-3 px-4">Login/Signup</button>
