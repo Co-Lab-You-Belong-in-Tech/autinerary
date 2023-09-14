@@ -40,7 +40,7 @@ export default function Footer(){
         </Link>
 
         <p className="mt-8">© 2023 <span className="font-bold">AUTINERARY CO..</span> All Rights Reserved.</p>
-        <p className="mt-8">Made by Autinerary's Web Dev Team on <FaGithub size={24} color='white' className='inline-block' /> using <TbBrandVscode size={24} color='white' className='inline-block' /></p>
+        <p className="mt-8">Made by Autinerary&apos;s Web Dev Team on <FaGithub size={24} color='white' className='inline-block' /> using <TbBrandVscode size={24} color='white' className='inline-block' /></p>
       </div>
     </footer>
   )
