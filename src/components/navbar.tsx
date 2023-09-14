@@ -39,7 +39,6 @@ export default function Navbar() {
       <nav className='flex h-16 items-center justify-between mb-1 px-6'>
         <Link href='/' className="flex items-center space-x-4 md:space-x-8 mx-3 px-3 md:mx-6 md:px-6">
           <Image alt='Logo' src={ isScrolled ? logo: logoWhite } height={50} width={50} />
-          <h2 className={`text-4xl text-bold ${ isScrolled ? '' : 'text-white'}`}>Autinerary</h2>
         </Link>
 
         <div className="flex items-center gap-x-6">
@@ -50,7 +49,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className={isMenuOpen ? '' : 'hidden'}>
+      <div className={isMenuOpen ? 'bg-white' : 'hidden'}>
         {
           navbarLinks.map((link) => (
             <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>

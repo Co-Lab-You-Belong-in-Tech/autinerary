@@ -1,7 +1,8 @@
 'use client';
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { BiUpArrow } from 'react-icons/bi';
+import upBtn from '../../public/images/icons/up.png'
 import { FaHeart } from "react-icons/fa";
 
 export default function BackToTop() {
@@ -31,7 +32,7 @@ export default function BackToTop() {
       </button>
 
       <button className='bg-transparent p-3 rounded-lg shadow-xl' onClick={scrollToTop}>
-        <BiUpArrow size={40} />
+        <Image alt='Back to top' src={upBtn} height={50} width={50}/>
       </button>
     </div>
   );

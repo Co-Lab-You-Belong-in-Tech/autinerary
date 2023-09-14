@@ -6,7 +6,7 @@ import BackToTop from "@/components/backToTop";
 
 export default function Home() {
   return (
-    <main>
+    <main className="animate-bottom">
       <Navbar />
       <HomeHero />
       <Goal />

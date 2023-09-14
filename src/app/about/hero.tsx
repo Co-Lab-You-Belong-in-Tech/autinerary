@@ -1,4 +1,4 @@
-import background from '../../../public/images/aboutusbackground.png'
+import background from '../../../public/images/heros/aboutusbackground.png'
 import Image from 'next/image';
 
 export default function AboutHero() {

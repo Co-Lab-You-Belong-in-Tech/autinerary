@@ -1,7 +1,7 @@
 import Image from "next/image";
-import hero from '../../public/images/heros/hero.png';
+import hero from '../../../../public/images/heros/autintrobkgrd.png';
 
-export default function HomeHero(){
+export default function AutismIntroHero() {
   return (
     <section className="relative w-screen overflow-x-hidden min-h-screen flex">
       <Image 
@@ -14,8 +14,10 @@ export default function HomeHero(){
       />
 
       <div className='relative mx-auto flex flex-col justify-center text-white items-center p-2'>
-        <h4 className="uppercase text-3xl md:text-5xl tracking-widest leading-loose font-semibold">Welcome to</h4>
-        <h2 className="uppercase mt-2 tracking-widest font-bold text-5xl md:text-8xl">autinerary</h2>
+        <h4 className="text-3xl md:text-5xl tracking-widest leading-loose font-semibold">Are you</h4>
+        <h2 className="uppercase mt-2 tracking-wide text-center font-bold text-5xl md:text-7xl">new to autism?</h2>
+        <h4 className="text-3xl text-center leading-loose mt-5 font-normal">If so, this is a good place to start</h4>
+
       </div>
 
       <div className="absolute bottom-0 left-0 w-full overflow-hidden transform rotate-180">
@@ -25,4 +27,4 @@ export default function HomeHero(){
       </div>
     </section>
   )
-}
+} 

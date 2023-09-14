@@ -214,7 +214,7 @@ export default function Team(){
 
       <div>
         {questionsData.map((question) => (
-          <Collapsible className="bg-[#ebebeb] mb-2 transition duration-500 ease-in-out">
+          <Collapsible key={question.question} className="bg-[#ebebeb] mb-2 transition duration-500 ease-in-out">
             <CollapsibleTrigger className="w-full p-4 text-xl">{question.question}</CollapsibleTrigger>
             <CollapsibleContent className="bg-white pt-4">{question.answer}</CollapsibleContent>
           </Collapsible>

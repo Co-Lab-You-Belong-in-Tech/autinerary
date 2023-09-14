@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main>
+    <main className="animate-bottom">
       <Navbar />
       <AboutHero />
       <Team />
