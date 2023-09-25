@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String?
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Post[]
+  comments  Comment[]
+}
+
+// Post model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Post {
+  id        String    @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  String
+  comments  Comment[]
+  channel   Channel   @relation(fields: [channelId], references: [id])
+  channelId String
+  topic     Topic     @relation(fields: [topicId], references: [id])
+  topicId   String
+  tags      Tag[]
+}
+
+// Comment model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
+}
+
+// Channel model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Channel {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+// Topic model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Topic {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+// Tag model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Tag {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
