@@ -32,11 +32,24 @@
   }
 }
 
+.car__body {
+  animation: shake 0.2s ease-in-out infinite alternate;
+}
 .car__line{
   transform-origin: center right;
   stroke-dasharray: 22;
   animation: line 0.6s ease-in-out infinite;
   animation-fill-mode: both;
+}
+
+.car__line--top {
+  animation-delay: 0s;
+}
+.car__line--middle {
+  animation-delay: 0.2s;
+}
+.car__line--bottom {
+  animation-delay: 0.4s;
 }
 
 .animate-bottom {

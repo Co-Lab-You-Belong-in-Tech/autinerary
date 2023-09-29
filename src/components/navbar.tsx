@@ -9,6 +9,7 @@ import menubar from '../../public/images/icons/drop.jpg'
 import menubarWhite from '../../public/images/icons/drop2.png'
 import Link from "next/link";
 import {PiCaretDownBold} from 'react-icons/pi';
+import { signOut, useSession } from "next-auth/react";
 
 interface SubDropdownItems {
   name: string;
@@ -64,7 +65,8 @@ const navbarLinks:NavbarLinks[] = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(()=> {
     const handleScroll = () => {
@@ -85,7 +87,19 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-x-6">
-          <button className={`hidden md:flex ${isScrolled ? '' : 'text-white' }`}>Login/Signup</button>
+          {
+            session?.user ? (
+              <button 
+                onClick={()=> signOut({
+                  redirect: true,
+                  callbackUrl: '/login'
+                })}
+                className={`hidden md:flex ${isScrolled ? '' : 'text-white' }`}
+              >
+                Sign Out
+              </button>
+            ) : <Link href='/login' className={`hidden md:flex ${isScrolled ? '' : 'text-white' }`}>Login/Signup</Link>
+          }
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Image alt='Menu bar' src={ isScrolled ? menubar: menubarWhite } width={30} height={30} />
           </button>
@@ -99,7 +113,7 @@ export default function Navbar() {
               { link.link ? (
                 <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
               ) : (
-                <Collapsible className="w-full flex flex-col justify-center text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4 cursor-pointer">
+                <Collapsible key={link.name} className="w-full flex flex-col justify-center text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4 cursor-pointer">
                   <CollapsibleTrigger className='flex text-center justify-center items-center gap-x-2'>{link.name} <PiCaretDownBold /></CollapsibleTrigger>
                   <CollapsibleContent className="bg-white p-3 text-center mt-3">
                     {link.dropdown?.map((dropdown) => (
@@ -108,7 +122,7 @@ export default function Navbar() {
                           <Link key={dropdown.name} className="block text-center bg-white hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={dropdown.link}>{dropdown.name}</Link>            
                         ): (
                           <>
-                            <Collapsible className="w-full flex flex-col justify-center mx-auto text-center">
+                            <Collapsible key={dropdown.name} className="w-full flex flex-col justify-center mx-auto text-center">
                               <CollapsibleTrigger className='flex justify-center text-center py-4 items-center gap-x-2'>{dropdown.name} <PiCaretDownBold /></CollapsibleTrigger>
                               <CollapsibleContent>
                                 {dropdown.subDropdown?.map((item, idx) => (
@@ -126,7 +140,20 @@ export default function Navbar() {
             </div>
           ))
         }
-        <button className="md:hidden w-full text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd]  py-3 px-4">Login/Signup</button>
+        {
+          session?.user ? (
+            <button 
+              onClick={()=> signOut({
+                redirect: true,
+                callbackUrl: '/login'
+              })}
+              className="md:hidden w-full text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4"
+            >
+              Sign Out
+            </button>
+          ) : <Link href='/login' className="md:hidden w-full text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4">Login/Signup</Link>
+        }
+        
       </div>
     </header>
   )
