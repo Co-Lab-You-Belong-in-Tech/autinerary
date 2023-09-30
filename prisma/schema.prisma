@@ -10,94 +10,77 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// User model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+
 model User {
-  id           String    @id @default(uuid())
-  firstName    String    @map("first_name") @db.VarChar(100)
-  lastName     String    @map("last_name") @db.VarChar(100)
-  email        String    @unique @db.VarChar(255)
-  password     String?
-  relationship UserType
-  role         UserRole  @default(USER)
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
-  profile      Profile?
-  posts        Post[]
-  channels     Channel[]
-  comments     Comment[]
-
-  @@map("users")
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String?
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Post[]
+  comments  Comment[]
 }
 
-model Channel {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  description String
-  creator     User     @relation(fields: [creatorId], references: [id])
-  creatorId   String
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  posts       Post[]
-
-  @@map("channels")
-}
-
-model Profile {
-  id     String  @id @default(uuid())
-  bio    String?
-  userId String  @unique
-  user   User    @relation(fields: [userId], references: [id], onDelete: NoAction)
-}
-
+// Post model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
 model Post {
-  id         String     @id @default(uuid())
-  title      String     @db.VarChar(200)
-  content    String
-  author     User       @relation(fields: [authorId], references: [id])
-  authorId   String
-  channel    Channel    @relation(fields: [channelId], references: [id])
-  channelId  String
-  createdAt  DateTime   @default(now()) @map("created_at")
-  updatedAt  DateTime   @updatedAt @map("updated_at")
-  comments   Comment[]
-  categories Category[]
-
-  @@map("posts")
+  id        String    @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  String
+  comments  Comment[]
+  channel   Channel?  @relation(fields: [channelId], references: [id])
+  channelId String?
+  topic     Topic?    @relation(fields: [topicId], references: [id])
+  topicId   String?
+  tags      Tag[]
 }
 
-model Category {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  description String?
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  posts       Post[]
-
-  @@map("categories")
-}
-
+// Comment model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
 model Comment {
-  id              String    @id @default(uuid())
-  content         String
-  author          User      @relation(fields: [authorId], references: [id])
-  authorId        String
-  post            Post      @relation(fields: [postId], references: [id])
-  postId          String
-  children        Comment[] @relation("NestedComments")
-  parentCommentId String?
-  parentComment   Comment?  @relation("NestedComments", fields: [parentCommentId], references: [id])
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
-
-  @@map("comments")
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
 }
 
-enum UserType {
-  Sibling
-  Parent
-  Adult
+// Channel model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Channel {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
 }
 
-enum UserRole {
-  USER
-  ADMIN
+// Topic model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Topic {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+// Tag model for the autinerary discussion forum application
+// id uses uuid instead of autoincrement
+model Tag {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
 }
