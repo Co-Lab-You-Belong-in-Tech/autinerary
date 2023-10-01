@@ -63,7 +63,7 @@ const navbarLinks:NavbarLinks[] = [
   {name:"Contact Us", link:'#'},
 ]
 
-export default function Navbar() {
+export default function Navbar({ chat=false }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
@@ -78,9 +78,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [])
 
-  
+  const transparentChoice = chat ? 'bg-gray-400' : 'bg-transparent';
+
   return (
-    <header className={`fixed top-0 w-full z-10 transition duration-300 ease-in-out ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 w-full z-10 transition duration-300 ease-in-out ${isScrolled ? 'bg-white shadow-lg' : transparentChoice }`}>
       <nav className='flex h-16 items-center justify-between mb-1 px-6'>
         <Link href='/' className="flex items-center space-x-4 md:space-x-8 mx-3 px-3 md:mx-6 md:px-6">
           <Image alt='Logo' src={ isScrolled ? logo: logoWhite } height={50} width={50} />
