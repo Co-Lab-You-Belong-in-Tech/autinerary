@@ -60,11 +60,13 @@ export default function NewDiscussion(){
   const router = useRouter()
 
   if (!session) router.push('/login')
+  
 
   const submitPost = async() => {
     setIsLoading(true)
     const content = localStorage.getItem('content')
-    
+    const authorId = session?.user?.email
+
     if (title === '' || title === null) {
       notify({ type:'error', message:"Title is empty!" })
       return
@@ -76,7 +78,7 @@ export default function NewDiscussion(){
     try {
       const response = await fetch('/api/post', {
         method: 'POST',
-        body: JSON.stringify({ title, content })
+        body: JSON.stringify({ title, content, authorId })
       })
       if (response.ok) {
         notify({ type: 'success', message: 'Post created sucessfully' })
