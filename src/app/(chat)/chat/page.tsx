@@ -1,10 +1,31 @@
-import {getPosts} from '@/lib/getPosts'
+import { prisma } from '@/lib/prisma';
 import Link from 'next/link'
 import { CgComment } from 'react-icons/cg'
 
+async function getPosts({ page = 1 }) {
+  const limit = 10
+  const skip = (page - 1) * limit
+  try {
+    const result = await prisma.post.findMany({
+      skip: skip,
+      take: limit,
+      include: {
+        _count: {
+          select: { comments: true}
+        },
+      },
+    });
+
+    return result
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default async function Chat({ searchParams }: { searchParams: { [key: string]: string | string[]| undefined}}){
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
-  const posts = await getPosts({ page: page })
+  const posts = await getPosts({ page: page})
 
   return (
     <section className='mt-8 pt-8'>

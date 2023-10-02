@@ -1,10 +1,9 @@
 'use client';
 
-import { useCallback, useState } from "react"
-import { createEditor, Editor, BaseEditor, Descendant } from 'slate';
+import { useCallback, useEffect, useState } from "react"
+import { createEditor, Editor, BaseEditor, Descendant, Node } from 'slate';
 import { Slate, Editable, withReact, ReactEditor, RenderLeafProps } from 'slate-react'
 import { FaBold } from 'react-icons/fa';
-import { Node } from "slate";
 import { AiOutlineItalic } from "react-icons/ai";
 import { notify } from "@/lib/utils";
 import { useSession } from "next-auth/react";
@@ -51,17 +50,22 @@ const initialValue: Descendant[] = [
 
 
 export default function NewDiscussion(){
+  const router = useRouter();
   const [editor] = useState(() => withReact(createEditor()))
   const [isBoldActive, setIsBoldActive] = useState(false);
   const [isItalicActive, setIsItalicActive] = useState(false);
   const [title, setTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false)
   const { data: session } = useSession()
-  const router = useRouter()
 
-  if (!session) router.push('/login')
+  const renderLeaf = useCallback((props: RenderLeafProps) => {
+    return <Leaf {...props} />
+  }, [])
+
+  useEffect(() => {
+    if (!session) router.push('/login')
+  }, [session])
   
-
   const submitPost = async() => {
     setIsLoading(true)
     const content = localStorage.getItem('content')
@@ -83,10 +87,10 @@ export default function NewDiscussion(){
       if (response.ok) {
         notify({ type: 'success', message: 'Post created sucessfully' })
         setTitle('')
+        setIsLoading(false)
         localStorage.setItem('content', '')
         router.push('/chat')
       }
-      setIsLoading(false)
     } catch(error) {
       console.log(error)
       setIsLoading(false)
@@ -127,9 +131,7 @@ export default function NewDiscussion(){
     }
   }
 
-  const renderLeaf = useCallback((props: RenderLeafProps) => {
-    return <Leaf {...props} />
-  }, [])
+  
 
   return (
     <section className="mx-6 md:mx-12 mt-8 md:mt-12 p-3 md:p-6">
@@ -165,7 +167,6 @@ export default function NewDiscussion(){
             op => 'set_selection' !== op.type
           )
           if (isAstChange) {
-            const content = JSON.stringify(value)
             localStorage.setItem('content', serialize(value))
           }
         }}
