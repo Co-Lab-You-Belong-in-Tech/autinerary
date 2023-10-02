@@ -1,5 +1,6 @@
 import {getPosts} from '@/lib/getPosts'
 import Link from 'next/link'
+import { CgComment } from 'react-icons/cg'
 
 export default async function Chat({ searchParams }: { searchParams: { [key: string]: string | string[]| undefined}}){
   const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
@@ -8,7 +9,7 @@ export default async function Chat({ searchParams }: { searchParams: { [key: str
   return (
     <section className='mt-8 pt-8'>
       <div className='m-12 p-12'>
-        <h1 className='text-sky-400 text-center text-3xl md:text-5xl font-extrabold leading-loose tracking-wide'>Autinerary's Community</h1>
+        <h1 className='text-sky-400 text-center text-3xl md:text-5xl font-extrabold leading-loose tracking-wide'>Autinerary&apos;s Community</h1>
         <p className='text-xl text-center mt-6 leading-7'>Choose a topic or/and a group channel  filter  when starting a discussion. Read our frequently asked questions (FAQ). Please read through community rules before posting a discussion post and report any abuse by clicking report under relevant post. To learn more about Autinerary, visit our website.</p>
       </div>
       <div className='bg-sky-400 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -17,8 +18,9 @@ export default async function Chat({ searchParams }: { searchParams: { [key: str
           <hr className='border-2 border-sky-400 my-4' />
           {
             posts?.map((post) => (
-              <div className='bg-white p-6 rounded-xl'>
+              <div key={post.id} className='bg-white p-6 rounded-xl mb-4'>
                 <Link href={`/chat/${post.id}`} className='font-semibold text-sky-400 text-xl'>{post.title}</Link>
+                <p className='flex items-center gap-x-2'>{post._count.comments} comment{post._count.comments > 1 && 's' } <CgComment /> </p>
               </div>
             ))
           }

@@ -2,10 +2,11 @@ import { prisma } from "@/lib/prisma";
 import { PageProps } from "@/lib/props";
 import { options } from "../../auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 export async function GET(request: Request, { params: { id } }: PageProps) {
   const session = await getServerSession(options);
-  console.log(session)
+  if (!session) redirect('/login')
   try {
     const post = await prisma.post.findUnique({
       where: { id: id },

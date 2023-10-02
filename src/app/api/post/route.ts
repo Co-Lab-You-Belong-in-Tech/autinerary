@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   if (!session) redirect('/login')
   try {
     const body = await request.json()
-    if ( !body.authorId || !body.title || !body.content ) return new Response(JSON.stringify({ message: 'FIll in the fields' }), { status: 400 })
+    if ( !body.authorId || !body.title || !body.content ) return new Response(JSON.stringify({ message: 'Fill in the fields' }), { status: 400 })
     
     await prisma.post.create({
       data: body

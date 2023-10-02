@@ -4,11 +4,18 @@ export async function getPosts({ page = 1 }) {
   const limit = 10
   const skip = (page - 1) * limit
   try {
-    const results = await prisma.post.findMany({
+    const result = await prisma.post.findMany({
       skip: skip,
-      take: limit
-    })
-    return results
+      take: limit,
+      include: {
+        _count: {
+          select: { comments: true}
+        },
+      },
+    });
+
+    return result
+    
   } catch (error) {
     console.log(error)
   }

@@ -32,7 +32,7 @@ model Channel {
   id          String   @id @default(uuid())
   name        String   @unique
   description String
-  creator     User     @relation(fields: [creatorId], references: [id])
+  creator     User     @relation(fields: [creatorId], references: [email])
   creatorId   String
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
@@ -78,7 +78,7 @@ model Category {
 model Comment {
   id              String    @id @default(uuid())
   content         String
-  author          User      @relation(fields: [authorId], references: [id])
+  author          User      @relation(fields: [authorId], references: [email])
   authorId        String
   post            Post      @relation(fields: [postId], references: [id])
   postId          String
