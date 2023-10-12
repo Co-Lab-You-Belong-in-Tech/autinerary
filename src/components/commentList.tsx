@@ -18,7 +18,9 @@ export default function CommentList({ comment }: { comment: CommentProps }) {
         </h6>
       </div>
       <p className="text-sm">{comment.content}</p>
+      
       <Reply parent={true} parentId={comment.id} postId={comment.postId} />
+
       {comment.children && comment.children.length > 0 && (
         <div className="ml-8">
           {comment.children.map((childComment) => (
@@ -26,6 +28,8 @@ export default function CommentList({ comment }: { comment: CommentProps }) {
           ))}
         </div>
       )}
+
+      <hr />
     </div>
   );
 }

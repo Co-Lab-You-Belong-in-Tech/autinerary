@@ -45,6 +45,7 @@ async function getComments(id: string, page=1 ) {
     skip: skip,
     take: limit
   })
+
   const topLevelComments = comments.filter(
     (comment) => !comment.parentCommentId
   );
@@ -64,7 +65,6 @@ export default async function SinglePost({ params: { id } }: PageProps) {
   const post = await getPost(id)
   if (!post) return notFound()
   const comments = await getComments(id)
-  console.log(comments)
 
   return (
     <section className='mt-8 py-8 bg-sky-400 bg-opacity-25'>

@@ -28,6 +28,7 @@ export default function Login(){
       callbackUrl: '/chat'
     }); 
   }
+  
   return (
     <section className="flex justify-center items-center h-screen mx-4 px-4 animate-bottom">
       <div className="w-full max-w-md rounded-3xl p-6 shadow-2xl">

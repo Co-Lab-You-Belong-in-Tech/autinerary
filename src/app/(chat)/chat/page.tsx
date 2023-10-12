@@ -1,31 +1,34 @@
-import { prisma } from '@/lib/prisma';
+'use client';
+
 import Link from 'next/link'
-import { CgComment } from 'react-icons/cg'
+import { CgComment } from 'react-icons/cg';
+import { Post } from '@prisma/client';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
-async function getPosts({ page = 1 }) {
-  const limit = 10
-  const skip = (page - 1) * limit
-  try {
-    const result = await prisma.post.findMany({
-      skip: skip,
-      take: limit,
-      include: {
-        _count: {
-          select: { comments: true}
-        },
-      },
-    });
-
-    return result
-    
-  } catch (error) {
-    console.log(error)
-  }
+type Posts = Post & {
+  _count: {
+    comments: number;
+  };
 }
 
-export default async function Chat({ searchParams }: { searchParams: { [key: string]: string | string[]| undefined}}){
-  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1
-  const posts = await getPosts({ page: page})
+export default function Chat(){
+  const [page, setPage] = useState(1)
+  const [selectedTag, setSelectedTag] = useState<string | null>(null)
+  const [selectedChannel, setSelectedChannel] = useState<string | null>(null)
+  
+  const { data: posts, isLoading } = useQuery<Posts[]>({
+    queryKey: ['posts', page, selectedTag, selectedChannel],
+    queryFn: async () => {
+      let url = `/api/post?page=${page}`;
+      if (selectedTag) url += `&tag=${selectedTag}`;
+      if (selectedChannel) url += `&channel=${selectedChannel}`;
+
+      const response = await fetch(url)
+      const data = await response.json()
+      return data
+    }
+  })
 
   return (
     <section className='mt-8 pt-8'>
@@ -59,7 +62,7 @@ export default async function Chat({ searchParams }: { searchParams: { [key: str
             <div className='inline-flex flex-col'>
               <button className='px-6 py-3 rounded-xl bg-sky-50 mb-3 text-start'>Introductions</button>
               <button className='px-6 py-3 rounded-xl bg-sky-50 mb-3 text-start'>Experiences</button>
-              <button className='px-6 py-3 rounded-xl bg-sky-50 mb-3 text-start'>Venting</button>
+              <button onClick={() => setSelectedTag('Vent')} className='px-6 py-3 rounded-xl bg-sky-50 mb-3 text-start'>Vent</button>
               <button className='px-6 py-3 rounded-xl bg-sky-50 mb-3 text-start'>Wins</button>
             </div>
           </div>

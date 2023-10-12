@@ -110,7 +110,7 @@ export default function Navbar({ chat=false }) {
       <div className={isMenuOpen ? 'bg-white' : 'hidden'}>
         {
           navbarLinks.map((link) => (
-            <div key={link.name}>
+            <div>
               { link.link ? (
                 <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
               ) : (
