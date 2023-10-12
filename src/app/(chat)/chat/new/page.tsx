@@ -140,7 +140,7 @@ export default function NewDiscussion(){
             <div className="flex flex-col">
               { showTopics && 
                 tags?.map((tag) => (
-                  <label htmlFor={tag.name}>
+                  <label key={tag.id} htmlFor={tag.name}>
                     <input 
                       className='p-4 mx-4 mb-2' 
                       id={tag.name} 
