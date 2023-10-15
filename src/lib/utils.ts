@@ -1,5 +1,5 @@
-import { QueryClient } from "@tanstack/react-query";
-import { cache } from "react";
+import { QueryClient } from "@tanstack/react-query"
+// import { cache } from "react";
 import { toast } from "react-toastify"
 
 interface NotificationProps {
@@ -7,7 +7,7 @@ interface NotificationProps {
   message: string
 }
 
-export function notify({ type, message }: NotificationProps){
+export function notify({ type, message }: NotificationProps) {
   type === 'success' ?
     toast.success(message, {
       position: 'top-right'
@@ -39,5 +39,12 @@ export function formatRelativeDate(inputDate: Date): string {
 }
 
 // Singleton Instance of Query Client
-const getQueryClient = cache(() => new QueryClient())
-export default getQueryClient
+const getQueryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+})
+export { getQueryClient }
