@@ -1,5 +1,3 @@
-import { QueryClient } from "@tanstack/react-query"
-// import { cache } from "react";
 import { toast } from "react-toastify"
 
 interface NotificationProps {
@@ -37,14 +35,3 @@ export function formatRelativeDate(inputDate: Date): string {
     return inputDate.toLocaleDateString();
   }
 }
-
-// Singleton Instance of Query Client
-const getQueryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
-    },
-  },
-})
-export { getQueryClient }

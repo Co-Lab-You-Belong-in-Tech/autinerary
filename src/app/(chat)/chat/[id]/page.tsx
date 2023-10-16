@@ -5,7 +5,7 @@ import Reply from "@/components/reply";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import CommentList from "@/components/commentList";
-import sanitizeHtml from "sanitize-html";
+
 
 async function getPost(id: string) {
   const post = await prisma.post.findUnique({
@@ -97,10 +97,7 @@ export default async function SinglePost({ params: { id } }: PageProps) {
           <h6>{post?.author.firstName}</h6>
         </div>
 
-        <div
-          className="px-8 mt-6"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: post?.content }} className="px-8 mt-6 prose" />
         <hr className="border my-4 px-8" />
 
         <Reply postId={post?.id} />

@@ -59,6 +59,7 @@ model Post {
   channel    Channel?   @relation(fields: [channelId], references: [id])
   categories Category[] @relation("CategoryToPost")
 
+  @@index(fields: [title, content, channelId])
   @@map("posts")
 }
 
