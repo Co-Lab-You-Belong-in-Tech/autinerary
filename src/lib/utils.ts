@@ -5,7 +5,7 @@ interface NotificationProps {
   message: string
 }
 
-export function notify({ type, message }: NotificationProps){
+export function notify({ type, message }: NotificationProps) {
   type === 'success' ?
     toast.success(message, {
       position: 'top-right'
