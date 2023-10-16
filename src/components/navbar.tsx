@@ -112,15 +112,15 @@ export default function Navbar({ chat=false }) {
           navbarLinks.map((link) => (
             <div key={link.name}>
               { link.link ? (
-                <Link key={link.name} className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
+                <Link className="block text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={link.link}>{link.name}</Link>
               ) : (
                 <Collapsible key={link.name} className="w-full flex flex-col justify-center text-center hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4 cursor-pointer">
                   <CollapsibleTrigger className='flex text-center justify-center items-center gap-x-2'>{link.name} <PiCaretDownBold /></CollapsibleTrigger>
                   <CollapsibleContent className="bg-white p-3 text-center mt-3">
                     {link.dropdown?.map((dropdown) => (
-                      <>
+                      <div key={dropdown.name}>
                         {dropdown.link ? (
-                          <Link key={dropdown.name} className="block text-center bg-white hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={dropdown.link}>{dropdown.name}</Link>            
+                          <Link className="block text-center bg-white hover:bg-gradient-to-r from-[#2998ff] to-[#ff4bfd] py-3 px-4" href={dropdown.link}>{dropdown.name}</Link>            
                         ): (
                           <>
                             <Collapsible key={dropdown.name} className="w-full flex flex-col justify-center mx-auto text-center">
@@ -133,7 +133,7 @@ export default function Navbar({ chat=false }) {
                             </Collapsible>
                           </>
                         )}
-                      </>
+                      </div>
                     ))}
                   </CollapsibleContent>
                 </Collapsible>

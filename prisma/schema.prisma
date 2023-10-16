@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,19 +8,20 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(uuid())
-  firstName    String    @map("first_name") @db.VarChar(100)
-  lastName     String    @map("last_name") @db.VarChar(100)
-  email        String    @unique @db.VarChar(255)
+  id           String     @id @default(uuid())
+  firstName    String     @map("first_name") @db.VarChar(100)
+  lastName     String     @map("last_name") @db.VarChar(100)
+  email        String     @unique @db.VarChar(255)
   password     String?
   relationship UserType
-  role         UserRole  @default(USER)
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
+  role         UserRole   @default(USER)
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
   profile      Profile?
-  posts        Post[]
+  Category     Category[]
   channels     Channel[]
   comments     Comment[]
+  posts        Post[]
 
   @@map("users")
 }
@@ -32,10 +30,10 @@ model Channel {
   id          String   @id @default(uuid())
   name        String   @unique
   description String
-  creator     User     @relation(fields: [creatorId], references: [id])
   creatorId   String
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+  creator     User     @relation(fields: [creatorId], references: [email])
   posts       Post[]
 
   @@map("channels")
@@ -52,14 +50,14 @@ model Post {
   id         String     @id @default(uuid())
   title      String     @db.VarChar(200)
   content    String
-  author     User       @relation(fields: [authorId], references: [email])
   authorId   String
-  channel    Channel?   @relation(fields: [channelId], references: [id])
   channelId  String?
   createdAt  DateTime   @default(now()) @map("created_at")
   updatedAt  DateTime   @updatedAt @map("updated_at")
   comments   Comment[]
-  categories Category[]
+  author     User       @relation(fields: [authorId], references: [email])
+  channel    Channel?   @relation(fields: [channelId], references: [id])
+  categories Category[] @relation("CategoryToPost")
 
   @@map("posts")
 }
@@ -70,7 +68,9 @@ model Category {
   description String?
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  posts       Post[]
+  creatorId   String
+  creator     User     @relation(fields: [creatorId], references: [email])
+  posts       Post[]   @relation("CategoryToPost")
 
   @@map("categories")
 }
@@ -78,15 +78,15 @@ model Category {
 model Comment {
   id              String    @id @default(uuid())
   content         String
-  author          User      @relation(fields: [authorId], references: [id])
   authorId        String
-  post            Post      @relation(fields: [postId], references: [id])
   postId          String
-  children        Comment[] @relation("NestedComments")
   parentCommentId String?
-  parentComment   Comment?  @relation("NestedComments", fields: [parentCommentId], references: [id])
   createdAt       DateTime  @default(now()) @map("created_at")
   updatedAt       DateTime  @updatedAt @map("updated_at")
+  author          User      @relation(fields: [authorId], references: [email])
+  parentComment   Comment?  @relation("NestedComments", fields: [parentCommentId], references: [id])
+  children        Comment[] @relation("NestedComments")
+  post            Post      @relation(fields: [postId], references: [id])
 
   @@map("comments")
 }

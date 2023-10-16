@@ -24,3 +24,18 @@ export const signupSchema = z.object({
 })
 
 export type SignupInput = z.infer<typeof signupSchema>
+
+export const PostSchema = z.object({
+  title: z.string().min(1).max(255),
+  tags: z.array(z.string().min(1).max(50)),
+  channel: z.string()
+})
+
+export type newPost = z.infer<typeof PostSchema>
+
+export const CategorySchema = z.object({
+  name: z.string().min(1),
+  description: z.string().optional()
+})
+
+export type newCategory = z.infer<typeof CategorySchema>
