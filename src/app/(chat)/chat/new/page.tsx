@@ -6,21 +6,22 @@ import StarterKit from '@tiptap/starter-kit';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PostSchema, newPost, newCategory } from "@/lib/schema";
-import getQueryClient, { notify } from "@/lib/utils";
+import { notify } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Loader from "@/lib/loader";
 import { useRouter } from "next/navigation";
 import TipTapMenuBar from "@/components/ui/TipTapMenuBar";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 type Channel = newCategory &  { id: string; }
+
 export default function NewDiscussion(){
   const router = useRouter();
   const [editorState, setEditorState] = useState('')
   const [showTopics, setShowTopics] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const { data: session } = useSession()
-  const queryClient = getQueryClient();
+  const queryClient = useQueryClient()
 
   const { data: channels, isLoading: channelsLoading } = useQuery<Channel[]>({
     queryKey: ['channel'],
@@ -64,7 +65,7 @@ export default function NewDiscussion(){
 
   useEffect(()=> {
     if (!session) router.push('/login')
-  })
+  }, [session])
   
   const { mutate } = useMutation({
     mutationFn: async (data: newPost) => {

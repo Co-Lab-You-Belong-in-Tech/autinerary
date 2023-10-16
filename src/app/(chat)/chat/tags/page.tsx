@@ -15,7 +15,7 @@ export default function Channel() {
 
   useEffect(()=> {
     if (!session) router.push('/login')
-  })
+  }, [session])
 
   const { register, handleSubmit, reset, formState: { errors, isSubmitting }} = useForm<newCategory>({
     resolver: zodResolver(CategorySchema),

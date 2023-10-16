@@ -78,7 +78,7 @@ export default async function SinglePost({ params: { id } }: PageProps) {
           <h6>{post?.author.firstName}</h6>
         </div>
 
-        <p className="px-8 mt-6">{post?.content}</p>
+        <div dangerouslySetInnerHTML={{ __html: post?.content }} className="px-8 mt-6 prose" />
         <hr className="border my-4 px-8" />
 
         <Reply postId={post?.id} />

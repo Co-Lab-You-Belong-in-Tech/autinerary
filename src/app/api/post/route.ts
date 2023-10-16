@@ -31,8 +31,9 @@ export async function GET(request: Request) {
   const page = Number(searchParams.get('page'))
   const tag = searchParams.get('tag')
   const channel = searchParams.get('channel')
+  const search = searchParams.get('search')
 
-  const limit = 10
+  const limit = 15
   const skip = (page - 1) * limit
 
   try {
@@ -67,8 +68,24 @@ export async function GET(request: Request) {
         }
       }
     }
+
+    if (search) {
+      query = {
+        ...query,
+        where: {
+          OR: [
+            {title: {contains: search, mode: 'insensitive'}},
+            {content: {contains: search, mode: 'insensitive'}},
+            {comments: {some: {content: {contains: search, mode: 'insensitive'}}}}
+          ]
+        }
+      }
+    }
+    
     const result = await prisma.post.findMany(query);
-    return new Response(JSON.stringify(result), { status: 200 })
+    const postCount = await prisma.post.count({ where: query.where })
+
+    return new Response(JSON.stringify({ count: postCount, result }), { status: 200 })
   } catch (error) {
     return new Response(JSON.stringify({ message: 'Something went wrong '}), { status: 400 })
   }

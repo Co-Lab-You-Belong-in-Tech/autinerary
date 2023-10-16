@@ -62,6 +62,7 @@ model Post {
   comments   Comment[]
   categories Category[]
 
+  @@index(fields: [title, content, channelId])
   @@map("posts")
 }
 
